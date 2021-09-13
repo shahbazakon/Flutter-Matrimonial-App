@@ -44,7 +44,7 @@ List<ParinayamModel> getEditDetails(int userId) {
   List<ParinayamModel> list = [];
   list.add(ParinayamModel(name: 'Profile', widget: ProfileDetails(userId : userId)));
   list.add(ParinayamModel(name: 'Personal', widget: PersonalDetails(userId : userId)));
-  list.add(ParinayamModel(name: 'Education And Career', widget: const EducationAndCareers()));
+  list.add(ParinayamModel(name: 'Education And Career', widget:EducationAndCareers(userId : userId)));
   list.add(ParinayamModel(name: 'Family', widget: const FamilyDetails()));
 
   return list;

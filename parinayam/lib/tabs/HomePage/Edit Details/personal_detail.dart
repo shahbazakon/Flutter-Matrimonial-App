@@ -19,8 +19,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   final userId;
   _PersonalDetailsState(this.userId);
 
-  var presonalDetailsPOST = "https://kiska.co.in/app/api/v1/personaldetails/";
-  var presonalDataPOST;
+
 
   String? bodyShapeValue = 'Fit';
   String bloodGroupValue = 'Select';
@@ -33,6 +32,10 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   TextEditingController raasiController = TextEditingController();
 
 
+  var presonalDetailsGET = "https://kiska.co.in/app/api/v1/personaldetails/";
+  var presonalDataGET;
+
+
   @override
   void initState() {
     super.initState();
@@ -40,8 +43,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   getPresonalDetails() async{
-    var PresonalPostRes = await Dio().get("$presonalDetailsPOST$userId");
-    presonalDataPOST = PresonalPostRes.data;
+    var PresonalGETRes = await Dio().get("$presonalDetailsGET$userId");
+    presonalDataGET = PresonalGETRes.data;
     setState(() {});
   }
   @override
@@ -267,7 +270,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   },
                 ),
                 16.width,
-                presonalDataPOST != null ?
+                presonalDataGET != null ?
                 AppButton(
                   padding: const EdgeInsets.all(12),
                   color: primaryColor,

@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import "package:nb_utils/src/extensions/int_extensions.dart";
+import 'package:parinayam/model/post_data.dart';
 import 'package:parinayam/screens/setting_screen.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/widgets.dart';
@@ -8,19 +10,37 @@ import 'family_details.dart';
 import 'personal_detail.dart';
 
 class EducationAndCareers extends StatefulWidget {
-  const EducationAndCareers({Key? key}) : super(key: key);
+  final userId;
+  const EducationAndCareers({Key? key, @required this.userId}) : super(key: key);
 
   @override
-  _EducationAndCareersState createState() => _EducationAndCareersState();
+  _EducationAndCareersState createState() => _EducationAndCareersState(userId);
 }
 
 class _EducationAndCareersState extends State<EducationAndCareers> {
-  dynamic genderdropdown = "Male";
+  final userId;
+  _EducationAndCareersState(this.userId);
+
   TextEditingController qualificationController = TextEditingController();
   TextEditingController designationController = TextEditingController();
   TextEditingController workController = TextEditingController();
   TextEditingController organizationController = TextEditingController();
   TextEditingController salaryController = TextEditingController();
+
+  var eduAndCarGET = "https://kiska.co.in/app/api/v1/edu_and_car/";
+  var eduAndCarDataGET;
+
+  @override
+  void initState() {
+    super.initState();
+    geteduAndCarDetails();
+  }
+
+  geteduAndCarDetails() async{
+    var PresonalGETRes = await Dio().get("$eduAndCarGET$userId");
+    eduAndCarDataGET = PresonalGETRes.data;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +152,19 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                     borderRadius: BorderRadius.circular(8)),
                 text: 'Save Details',
                 textStyle: primaryTextStyle(color: white),
-                onTap: () {},
+                onTap: () async {
+                  print(
+                      '1: ${qualificationController.text}\n 2: ${designationController.text}\n 3: ${workController.text}\n 4: ${organizationController.text}\n 5: ${salaryController.text}');
+                  await AddEduAndCar (
+                      qualificationController.text,
+                      designationController.text,
+                      workController.text,
+                      organizationController.text,
+                      salaryController.text,
+                      )
+                      .AddDetails(userId);
+                  print("GET RESPONCE: \n $eduAndCarDataGET ");
+                },
               ).expand(),
               16.width,
               AppButton(

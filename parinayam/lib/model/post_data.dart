@@ -181,6 +181,54 @@ class AddPresonalDetails {
   }
 }
 
+class AddEduAndCar {
+  String? qualificationController;
+  String? designationController;
+  String? workController;
+  String? organizationController;
+  String? salaryController;
+
+  AddEduAndCar(
+      this.qualificationController,
+      this.designationController,
+      this.workController,
+      this.organizationController,
+      this.salaryController);
+  AddDetails(userId) async {
+
+    print("Add Education and Career Called");
+    print("Add Education and Career Details: https://kiska.co.in/app/api/v1/createeduandcar/$userId");
+
+    try {
+      var formData = {
+        'hqualification': qualificationController,
+        'designation': designationController,
+        'wdomain': workController,
+        'oname': organizationController,
+        'salary': salaryController,
+      };
+
+      var res = await Dio()
+          .post('https://kiska.co.in/app/api/v1/createeduandcar/$userId',
+          data: formData)
+          .then((response) {
+        response.statusCode == 200
+            ? print("successful add Education and Career Details ")
+            : print("fail");
+      });
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print(e.message);
+        print(e.response!.data);
+        print(e.response!.headers);
+        print(e.response);
+      } else {
+        print("fail");
+        print(e.message);
+      }
+    }
+  }
+}
 
 
 
@@ -324,3 +372,55 @@ class editPresonalDetails {
     }
   }
 }
+
+
+
+class editEduAndCar {
+  String? qualificationController;
+  String? designationController;
+  String? workController;
+  String? organizationController;
+  String? salaryController;
+
+  editEduAndCar(
+      this.qualificationController,
+      this.designationController,
+      this.workController,
+      this.organizationController,
+      this.salaryController);
+  editDetails(userId) async {
+
+    print("Add Education and Career Called");
+    print("Add Education and Career Details: https://kiska.co.in/app/api/v1/editeduandcardetails/$userId");
+
+    try {
+      var formData = {
+        'hqualification': qualificationController,
+        'designation': designationController,
+        'wdomain': workController,
+        'oname': organizationController,
+        'salary': salaryController,
+      };
+
+      var res = await Dio()
+          .put('https://kiska.co.in/app/api/v1/editeduandcardetails/$userId',
+          data: formData)
+          .then((response) {
+        response.statusCode == 200
+            ? print("successful add Education and Career Details ")
+            : print("fail");
+      });
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print(e.message);
+        print(e.response!.data);
+        print(e.response!.headers);
+        print(e.response);
+      } else {
+        print("fail");
+        print(e.message);
+      }
+    }
+  }
+}
+
