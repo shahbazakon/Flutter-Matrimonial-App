@@ -1,0 +1,9 @@
+API:
+
+https://kiska.co.in/app/api/v1/dashboard/1
+https://kiska.co.in/app/api/v1/shortprofile/1
+https://kiska.co.in/app/api/v1/matchprofile/1
+https://kiska.co.in/app/api/v1/fullprofile/1
+https://kiska.co.in/app/api/v1/subsplan
+https://kiska.co.in/app/api/v1/phone/1
+
