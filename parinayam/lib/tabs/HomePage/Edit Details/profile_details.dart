@@ -20,17 +20,26 @@ class ProfileDetails extends StatefulWidget {
 }
 
 class _ProfileDetailsState extends State<ProfileDetails> {
-  TextEditingController TOBController = TextEditingController();
-  TextEditingController DOBController = TextEditingController();
-  String  maritalStatus = 'Unmarried';
-  String genderValue = 'Male';
-
-  // TextEditingController TOBController;
-  // TextEditingController DOBController;
 
   final userId;
-
   _ProfileDetailsState(this.userId);
+
+  String maritalStatus = 'Unmarried';
+  String genderValue = 'Male';
+  TextEditingController DOBController = TextEditingController();
+  TextEditingController TOBController = TextEditingController();
+  TextEditingController first_name = TextEditingController();
+  TextEditingController sceond_name = TextEditingController();
+  TextEditingController nick_name = TextEditingController();
+  TextEditingController mother_tongue = TextEditingController();
+  TextEditingController heightControlar = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController religionController = TextEditingController();
+  TextEditingController castController = TextEditingController();
+  TextEditingController subCastController = TextEditingController();
+
+
+
 
   var profileDetailsURL = "https://kiska.co.in/app/api/v1/personaldetails/";
   var profileDetailsData;
@@ -73,24 +82,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
   @override
   Widget build(BuildContext context) {
     String TOB = profileDetailsData[0]["TOB"];
-    TextEditingController first_name =
-    TextEditingController(text: profileDetailsData[0]["first_name"]);
-    TextEditingController sceond_name =
-    TextEditingController(text: profileDetailsData[0]["last_name"]);
-    TextEditingController nick_name = TextEditingController(text: profileDetailsData[0]["nickname"]);
-    TextEditingController mother_tongue =
-    TextEditingController(text: profileDetailsData[0]["mother_tongue"]);
-    TextEditingController heightControlar = TextEditingController(
-        text: (profileDetailsData[0]["height"]).toString());
-    TextEditingController cityController = TextEditingController(text: profileDetailsData[0]["POB"]);
-    TextEditingController religionController =
-    TextEditingController(text: profileDetailsData[0]["religion"]);
-    TextEditingController castController =
-    TextEditingController(text: profileDetailsData[0]["caste"]);
-    TextEditingController subCastController =
-    TextEditingController(text: profileDetailsData[0]["subcaste"]);
-    TOBController = TextEditingController(text: profileDetailsData[0]["TOB"]);
-    DOBController = TextEditingController(text: profileDetailsData[0]["DOB"]);
+    TOBController = TextEditingController();
+    DOBController = TextEditingController();
 
     Future<void> PickTime(BuildContext context) async {
       final TimeOfDay? newTime =
@@ -156,7 +149,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                           color: Colors.grey),
                       textFieldType: TextFieldType.OTHER,
                       cursorColor: primaryColor,
-                      controller: first_name,
+                      controller: first_name
+                        ..text = profileDetailsData[0]["first_name"],
                       decoration:
                           buildInputDecoration('First Name', 'First Name'),
                     ),
@@ -172,7 +166,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                           color: Colors.grey),
                       textFieldType: TextFieldType.OTHER,
                       cursorColor: primaryColor,
-                      controller: sceond_name,
+                      controller: sceond_name
+                        ..text = profileDetailsData[0]["last_name"],
                       decoration:
                           buildInputDecoration('Second Name', 'Second Name'),
                     ),
@@ -188,7 +183,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                       weight: FontWeight.bold, size: 18, color: Colors.grey),
                   textFieldType: TextFieldType.OTHER,
                   cursorColor: primaryColor,
-                  controller: nick_name,
+                  controller: nick_name
+                    ..text = profileDetailsData[0]["nickname"],
                   decoration: buildInputDecoration('Nick Name', 'Nick Name'),
                 ),
               ),
@@ -219,7 +215,9 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                                 color: Colors.grey),
                             textFieldType: TextFieldType.OTHER,
                             cursorColor: primaryColor,
-                            controller: heightControlar,
+                            controller: heightControlar
+                              ..text =
+                                  profileDetailsData[0]["height"].toString(),
                             decoration: buildInputDecoration(
                               'Height',
                               '',
@@ -254,17 +252,16 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                           });
                         },
                         items: <String>[
-                          'Male','Female',
-                        ].map<DropdownMenuItem<String>>(
-                                (String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14)),
-                              );
-                            }).toList(),
+                          'Male',
+                          'Female',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 14)),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
@@ -275,7 +272,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
               child: TextFormField(
                 // initialValue: profileDetailsData[0]["DOB"],
-                controller: DOBController,
+                controller: DOBController..text = profileDetailsData[0]["DOB"],
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.grey[500]),
                 decoration: InputDecoration(
@@ -300,7 +297,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
               child: TextFormField(
-                controller: TOBController,
+                controller: TOBController..text = profileDetailsData[0]["TOB"],
                 // initialValue: profileDetailsData[0]["TOB"],
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.grey[500]),
@@ -333,7 +330,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                       weight: FontWeight.bold, size: 18, color: Colors.grey),
                   textFieldType: TextFieldType.OTHER,
                   cursorColor: primaryColor,
-                  controller: religionController,
+                  controller: religionController
+                    ..text = profileDetailsData[0]["religion"],
                   decoration: buildInputDecoration('Religion', 'Religion'),
                 ),
               ),
@@ -350,7 +348,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                           color: Colors.grey),
                       textFieldType: TextFieldType.OTHER,
                       cursorColor: primaryColor,
-                      controller: castController,
+                      controller: castController
+                        ..text = profileDetailsData[0]["caste"],
                       decoration: buildInputDecoration('Cast', 'Cast'),
                     ),
                   ),
@@ -365,7 +364,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                           color: Colors.grey),
                       textFieldType: TextFieldType.OTHER,
                       cursorColor: primaryColor,
-                      controller: subCastController,
+                      controller: subCastController
+                        ..text = profileDetailsData[0]["subcaste"],
                       decoration: buildInputDecoration('SubCast', 'SubCast'),
                     ),
                   ),
@@ -380,7 +380,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                       weight: FontWeight.bold, size: 18, color: Colors.grey),
                   textFieldType: TextFieldType.OTHER,
                   cursorColor: primaryColor,
-                  controller: cityController,
+                  controller: cityController
+                    ..text = profileDetailsData[0]["POB"],
                   decoration: buildInputDecoration(
                       'Place of Birth', 'Place of Birth',
                       prefixIcon: const Icon(Icons.location_on_outlined,
@@ -396,7 +397,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                       weight: FontWeight.bold, size: 18, color: Colors.grey),
                   textFieldType: TextFieldType.OTHER,
                   cursorColor: primaryColor,
-                  controller: mother_tongue,
+                  controller: mother_tongue
+                    ..text = profileDetailsData[0]["mother_tongue"],
                   decoration: buildInputDecoration(
                       'Mother Tongue', 'Mother Tongue',
                       prefixIcon: const Icon(Icons.translate_rounded,
@@ -439,17 +441,16 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                           });
                         },
                         items: <String>[
-                          'Unmarried','Married',
-                        ].map<DropdownMenuItem<String>>(
-                                (String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14)),
-                              );
-                            }).toList(),
+                          'Unmarried',
+                          'Married',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 14)),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),

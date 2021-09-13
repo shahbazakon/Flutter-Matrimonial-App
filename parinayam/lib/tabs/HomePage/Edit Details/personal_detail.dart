@@ -19,8 +19,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   final userId;
   _PersonalDetailsState(this.userId);
 
-  var presonalDetailsURL = "https://kiska.co.in/app/api/v1/personaldetails/";
-  var presonalDetailsData;
+  var presonalDetailsPOST = "https://kiska.co.in/app/api/v1/personaldetails/";
+  var presonalDataPOST;
 
   String? bodyShapeValue = 'Fit';
   String bloodGroupValue = 'Select';
@@ -40,8 +40,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   getPresonalDetails() async{
-    var PresonalDetailsRes = await Dio().get("$presonalDetailsURL$userId");
-    presonalDetailsData = PresonalDetailsRes.data;
+    var PresonalPostRes = await Dio().get("$presonalDetailsPOST$userId");
+    presonalDataPOST = PresonalPostRes.data;
     setState(() {});
   }
   @override
@@ -267,7 +267,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   },
                 ),
                 16.width,
-                presonalDetailsData != null ?
+                presonalDataPOST != null ?
                 AppButton(
                   padding: const EdgeInsets.all(12),
                   color: primaryColor,
