@@ -69,7 +69,7 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SettingScreen()),
+                                    builder: (context) => const SettingScreen()),
                               );
                             }),
                       ),
@@ -137,7 +137,7 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
             Row(
               children: [
                 AppButton(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   text: 'Prev',
                   shapeBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),
@@ -149,8 +149,7 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                 ),
                 16.width,
 
-                eduAndCarDataGET == null ?
-                    AppButton(
+                if (eduAndCarDataGET == null) AppButton(
                   padding: const EdgeInsets.all(12),
                   color: primaryColor,
                   shapeBorder: RoundedRectangleBorder(
@@ -170,8 +169,7 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                         .editDetails(userId);
 
                   },
-                ).expand():
-                AppButton(
+                ).expand() else AppButton(
                   padding: const EdgeInsets.all(12),
                   color: primaryColor,
                   shapeBorder: RoundedRectangleBorder(
@@ -189,16 +187,16 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                       salaryController.text,
                     )
                         .AddDetails(userId);
-                    
-                    print('highest_qualification: ${eduAndCarDataGET}');
-                    print('GET DATA: ${eduAndCarDataGET} ');
+
+                    print('highest_qualification: $eduAndCarDataGET');
+                    print('GET DATA: $eduAndCarDataGET ');
                     print('GET URL: ${"$eduAndCarGET$userId"} ');
                   },
                 ).expand(),
 
                 16.width,
                 AppButton(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   text: 'Next',
                   shapeBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),
