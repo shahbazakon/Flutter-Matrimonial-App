@@ -51,22 +51,22 @@ class SignInScreenState extends State<SignInScreen> {
               Text('Glad to see you again!', style: primaryTextStyle()),
               16.height,
               AppTextField(
-                controller: emailController,
                 textStyle: primaryTextStyle(color: black),
                 focus: emailFocus,
                 nextFocus: passWordFocus,
                 textFieldType: TextFieldType.EMAIL,
                 cursorColor: primaryColor,
+                controller: emailController..text='abc@gmail.com',
                 decoration: buildInputDecoration('Email','Email',
                     prefixIcon:
                         const Icon(Icons.email_rounded, color: primaryColor)),
               ),
               16.height,
               AppTextField(
-                controller: phoneController,
                 textStyle: primaryTextStyle(color: black),
                 textFieldType: TextFieldType.PHONE,
                 cursorColor: primaryColor,
+                controller: phoneController..text="1234567890",
                 decoration: buildInputDecoration('Phone','Phone',
                     prefixIcon:
                         const Icon(Icons.call_rounded, color: primaryColor)),

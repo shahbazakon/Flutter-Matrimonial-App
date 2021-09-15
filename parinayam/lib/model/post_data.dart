@@ -41,6 +41,8 @@ class PostData {
   }
 }
 
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 class AddAccountDetails {
   String? first_name;
   String? sceond_name;
@@ -115,7 +117,7 @@ class AddAccountDetails {
   }
 }
 
-
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class AddPresonalDetails {
 
@@ -181,6 +183,8 @@ class AddPresonalDetails {
   }
 }
 
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 class AddEduAndCar {
   String? qualificationController;
   String? designationController;
@@ -205,7 +209,7 @@ class AddEduAndCar {
         'designation': designationController,
         'wdomain': workController,
         'oname': organizationController,
-        'salary': salaryController,
+        'salary': int.parse('$salaryController'),
       };
 
       var res = await Dio()
@@ -230,10 +234,64 @@ class AddEduAndCar {
   }
 }
 
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 // #####################################################################################################
 
+
+
+
+class editEduAndCar {
+  String? qualificationController;
+  String? designationController;
+  String? workController;
+  String? organizationController;
+  String? salaryController;
+
+  editEduAndCar(
+      this.qualificationController,
+      this.designationController,
+      this.workController,
+      this.organizationController,
+      this.salaryController);
+  editDetails(userId) async {
+
+    print("Edit Education and Career Called");
+    print("Edit Education and Career Details: https://kiska.co.in/app/api/v1/editeduandcardetails/$userId");
+
+    try {
+      var formData = {
+        'hqualification': qualificationController,
+        'designation': designationController,
+        'wdomain': workController,
+        'oname': organizationController,
+        'salary': int.parse('$salaryController')
+      };
+
+      var res = await Dio()
+          .put('https://kiska.co.in/app/api/v1/editeduandcardetails/$userId',
+          data: formData)
+          .then((response) {
+        response.statusCode == 200
+            ? print("successful Edit Education and Career Details ")
+            : print("fail");
+      });
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print(e.message);
+        print(e.response!.data);
+        print(e.response!.headers);
+        print(e.response);
+      } else {
+        print("fail");
+        print(e.message);
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class editProfileDetails {
   String? first_name;
@@ -276,7 +334,7 @@ class editProfileDetails {
         'lname': sceond_name,
         'nname': nick_name,
         'gender': genderValue,
-        'height': double.parse("${heightControlar}"),
+        'height': double.parse('$heightControlar'),
         'mtongue': mother_tongue,
         'DOB': DOBController,
         'TOB': TOBController,
@@ -308,6 +366,8 @@ class editProfileDetails {
     }
   }
 }
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class editPresonalDetails {
 
@@ -373,54 +433,8 @@ class editPresonalDetails {
   }
 }
 
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-class editEduAndCar {
-  String? qualificationController;
-  String? designationController;
-  String? workController;
-  String? organizationController;
-  String? salaryController;
 
-  editEduAndCar(
-      this.qualificationController,
-      this.designationController,
-      this.workController,
-      this.organizationController,
-      this.salaryController);
-  editDetails(userId) async {
-
-    print("Add Education and Career Called");
-    print("Add Education and Career Details: https://kiska.co.in/app/api/v1/editeduandcardetails/$userId");
-
-    try {
-      var formData = {
-        'hqualification': qualificationController,
-        'designation': designationController,
-        'wdomain': workController,
-        'oname': organizationController,
-        'salary': salaryController,
-      };
-
-      var res = await Dio()
-          .put('https://kiska.co.in/app/api/v1/editeduandcardetails/$userId',
-          data: formData)
-          .then((response) {
-        response.statusCode == 200
-            ? print("successful add Education and Career Details ")
-            : print("fail");
-      });
-    } on DioError catch (e) {
-      if (e.response != null) {
-        print(e.message);
-        print(e.response!.data);
-        print(e.response!.headers);
-        print(e.response);
-      } else {
-        print("fail");
-        print(e.message);
-      }
-    }
-  }
-}
 

@@ -78,40 +78,40 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
             Text('Sign up and get started!', style: primaryTextStyle()),
             16.height,
             AppTextField(
-              controller: first_name,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.EMAIL,
               cursorColor: primaryColor,
+              controller: first_name..text="Shahbaz",
               decoration: buildInputDecoration('First Name', 'First Name',
                   prefixIcon: const Icon(Icons.person_add_outlined,
                       color: primaryColor)),
             ),
             16.height,
             AppTextField(
-              controller: sceond_name,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
+              controller: sceond_name..text="Akon",
               decoration: buildInputDecoration('Second Name', 'Second Name',
                   prefixIcon: const Icon(Icons.person_add_alt_1_outlined,
                       color: primaryColor)),
             ),
             16.height,
             AppTextField(
-              controller: nick_name,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
+              controller: nick_name..text="Genius",
               decoration: buildInputDecoration('Nick Name', 'Nick Name',
                   prefixIcon:
                       const Icon(Icons.person_outline, color: primaryColor)),
             ),
             16.height,
             AppTextField(
-              controller: mother_tongue,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
+              controller: mother_tongue..text="Hindi",
               decoration: buildInputDecoration('Mother Tongue', 'Mother Tongue',
                   prefixIcon:
                       const Icon(Icons.translate_rounded, color: primaryColor)),
@@ -178,7 +178,7 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
                   child: Expanded(
                     child: TextFormField(
                       keyboardType: TextInputType.number,
-                      controller: heightControlar,
+                      controller: heightControlar..text="6.0",
                       cursorColor: primaryColor,
                       cursorRadius: const Radius.circular(10),
                       decoration: const InputDecoration(

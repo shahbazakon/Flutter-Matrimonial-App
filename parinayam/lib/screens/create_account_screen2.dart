@@ -130,7 +130,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
             Text('Fill all the Details', style: primaryTextStyle()),
             16.height,
             AppTextField(
-              controller: DOBController,
+              controller: DOBController..text="2001-02-01",
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
@@ -142,7 +142,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
             ),
             16.height,
             TextFormField(
-              controller: TOBController,
+              controller: TOBController..text = '10:30 AM',
               decoration: InputDecoration(
                 hintText: TOB,
                 prefixIcon: const Icon(Icons.access_time, color: primaryColor),
@@ -163,40 +163,40 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
             ),
             16.height,
             AppTextField(
-              controller: cityController,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
+              controller: cityController..text="Delhi",
               decoration: buildInputDecoration('City', 'City',
                   prefixIcon:
                       Icon(Icons.location_on_outlined, color: primaryColor)),
             ),
             16.height,
             AppTextField(
-              controller: religinController,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
+              controller: religinController..text = 'Demo',
               decoration: buildInputDecoration('Religion', 'Religion',
                   prefixIcon:
                       Icon(Icons.location_on_outlined, color: primaryColor)),
             ),
             16.height,
             AppTextField(
-              controller: castController,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
+              controller: castController..text="Demo1",
               decoration: buildInputDecoration('Cast', 'Cast',
                   prefixIcon:
                       const Icon(Icons.person_outline, color: primaryColor)),
             ),
             16.height,
             AppTextField(
-              controller: subCastController,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
+              controller: subCastController..text = 'Demo2',
               decoration: buildInputDecoration('SubCast', 'SubCast',
                   prefixIcon:
                       const Icon(Icons.person_outline, color: primaryColor)),

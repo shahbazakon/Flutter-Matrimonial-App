@@ -208,9 +208,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
             )
           ]),
           16.height,
-
-
-
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text(
               "Blood Group :",
