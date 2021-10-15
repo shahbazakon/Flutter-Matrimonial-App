@@ -3,14 +3,14 @@ import 'package:parinayam/utils/colors.dart';
 import 'setting_screen.dart';
 
 
-class about extends StatefulWidget {
-  const about({Key? key}) : super(key: key);
+class About extends StatefulWidget {
+  const About({Key? key}) : super(key: key);
 
   @override
-  _aboutState createState() => _aboutState();
+  _AboutState createState() => _AboutState();
 }
 
-class _aboutState extends State<about> {
+class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,7 @@ class _aboutState extends State<about> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SettingScreen()),
+                          builder: (context) => const SettingScreen()),
                     );
                   },
                 ),

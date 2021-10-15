@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:nb_utils/src/extensions/int_extensions.dart';
-import 'package:parinayam/model/post_data.dart';
+import '../api requests/post_data.dart';
 import 'package:parinayam/screens/setting_screen.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/widgets.dart';
@@ -26,11 +26,11 @@ class _ProfileDetailsState extends State<ProfileDetails> {
 
   String maritalStatus = 'Unmarried';
   String genderValue = 'Male';
-  TextEditingController DOBController = TextEditingController();
-  TextEditingController TOBController = TextEditingController();
-  TextEditingController first_name = TextEditingController();
-  TextEditingController sceond_name = TextEditingController();
-  TextEditingController nick_name = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+  TextEditingController tobController = TextEditingController();
+  TextEditingController firstName = TextEditingController();
+  TextEditingController secondName = TextEditingController();
+  TextEditingController nickName = TextEditingController();
   TextEditingController mother_tongue = TextEditingController();
   TextEditingController heightControlar = TextEditingController();
   TextEditingController cityController = TextEditingController();
@@ -41,7 +41,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
 
 
 
-  var profileDetailsURL = "https://kiska.co.in/app/api/v1/personaldetails/";
+  var profileDetailsURL = "https://matrimonial.kiska.co.in/app/api/v1/personaldetails/";
   var profileDetailsData;
 
   @override
@@ -52,29 +52,29 @@ class _ProfileDetailsState extends State<ProfileDetails> {
   }
 
   getProfileDetails() async {
-    var PresonalDetailsRes = await Dio().get("$profileDetailsURL$userId");
-    profileDetailsData = PresonalDetailsRes.data;
+    var presonalDetailsRes = await Dio().get("$profileDetailsURL$userId");
+    profileDetailsData = presonalDetailsRes.data;
     setState(() {});
   }
 
-  late DateTime DOB;
+  late DateTime dob;
 
   Future<void> init() async {
-    DOB = DateTime.now();
-    DOBController.text = DateFormat('dd/MM/yyyy').format(DOB);
+    dob = DateTime.now();
+    dobController.text = DateFormat('dd/MM/yyyy').format(dob);
   }
 
   pickDate() async {
     DateTime? newDate = await showDatePicker(
       context: context,
-      initialDate: DOB,
+      initialDate: dob,
       firstDate: DateTime(DateTime.now().year - 100),
       lastDate: DateTime(DateTime.now().year),
     );
     if (newDate != null) {
       setState(() {
-        DOB = newDate;
-        DOBController.text = DateFormat('dd/MM/yyyy').format(DOB);
+        dob = newDate;
+        dobController.text = DateFormat('dd/MM/yyyy').format(dob);
       });
     }
   }
@@ -82,17 +82,17 @@ class _ProfileDetailsState extends State<ProfileDetails> {
   @override
   Widget build(BuildContext context) {
     String TOB = profileDetailsData[0]["TOB"];
-    TOBController = TextEditingController();
-    DOBController = TextEditingController();
+    tobController = TextEditingController();
+    dobController = TextEditingController();
 
-    Future<void> PickTime(BuildContext context) async {
+    Future<void> pickTime(BuildContext context) async {
       final TimeOfDay? newTime =
           await showTimePicker(context: context, initialTime: TimeOfDay.now());
 
       if (newTime != null) {
         setState(() {
           TOB = newTime.format(context);
-          TOBController.text = newTime.format(context);
+          tobController.text = newTime.format(context);
         });
       }
     }
@@ -120,7 +120,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SettingScreen()),
+                                    builder: (context) => const SettingScreen()),
                               );
                             }),
                       ),
@@ -150,7 +150,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                             color: Colors.grey),
                         textFieldType: TextFieldType.OTHER,
                         cursorColor: primaryColor,
-                        controller: first_name
+                        controller: firstName
                           ..text = profileDetailsData[0]["first_name"],
                         decoration:
                             buildInputDecoration('First Name', 'First Name'),
@@ -167,7 +167,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                             color: Colors.grey),
                         textFieldType: TextFieldType.OTHER,
                         cursorColor: primaryColor,
-                        controller: sceond_name
+                        controller: secondName
                           ..text = profileDetailsData[0]["last_name"],
                         decoration:
                             buildInputDecoration('Second Name', 'Second Name'),
@@ -184,7 +184,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                         weight: FontWeight.bold, size: 18, color: Colors.grey),
                     textFieldType: TextFieldType.OTHER,
                     cursorColor: primaryColor,
-                    controller: nick_name
+                    controller: nickName
                       ..text = profileDetailsData[0]["nickname"],
                     decoration: buildInputDecoration('Nick Name', 'Nick Name'),
                   ),
@@ -275,7 +275,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                 padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                 child: TextFormField(
                   // initialValue: profileDetailsData[0]["DOB"],
-                  controller: DOBController..text = profileDetailsData[0]["DOB"],
+                  controller: dobController..text = profileDetailsData[0]["DOB"],
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.grey[500]),
                   decoration: InputDecoration(
@@ -300,7 +300,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                 child: TextFormField(
-                  controller: TOBController..text = profileDetailsData[0]["TOB"],
+                  controller: tobController..text = profileDetailsData[0]["TOB"],
                   // initialValue: profileDetailsData[0]["TOB"],
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.grey[500]),
@@ -321,7 +321,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                         borderSide: const BorderSide(color: grey, width: 0.5)),
                   ),
                   onTap: () {
-                    PickTime(context);
+                    pickTime(context);
                   },
                 ),
               ),
@@ -472,16 +472,16 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                     textStyle: primaryTextStyle(color: white),
                     onTap: () async {
                       print(
-                          '1: ${first_name.text}\n 2: ${sceond_name.text}\n 3: ${nick_name.text}\n 4: ${mother_tongue.text}\n 5: ${genderValue}\n 6: ${heightControlar.text} \n 7. ${DOBController.text} \n 8. ${TOBController.text} \n 9. ${cityController.text} \n 10. ${religionController.text} \n 11. ${castController.text} \n 12. ${subCastController.text} \n 13. ${maritalStatus}');
+                          '1: ${firstName.text}\n 2: ${secondName.text}\n 3: ${nickName.text}\n 4: ${mother_tongue.text}\n 5: $genderValue\n 6: ${heightControlar.text} \n 7. ${dobController.text} \n 8. ${tobController.text} \n 9. ${cityController.text} \n 10. ${religionController.text} \n 11. ${castController.text} \n 12. ${subCastController.text} \n 13. $maritalStatus');
                       await editProfileDetails(
-                              first_name.text,
-                              sceond_name.text,
-                              nick_name.text,
+                              firstName.text,
+                              secondName.text,
+                              nickName.text,
                               mother_tongue.text,
                               heightControlar.text,
                               genderValue,
-                              DOBController.text,
-                              TOBController.text,
+                              dobController.text,
+                              tobController.text,
                               cityController.text,
                               religionController.text,
                               castController.text,
@@ -523,7 +523,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                   ).expand(),
                   16.width,
                   AppButton(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     text: 'Next',
                     shapeBorder: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),

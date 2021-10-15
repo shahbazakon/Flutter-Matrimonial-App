@@ -1,22 +1,24 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:parinayam/utils/colors.dart';
+import 'package:path_provider/path_provider.dart';
 import '../main.dart';
-import 'ideal_screen.dart';
-
 
 class UploadPhotoScreen extends StatefulWidget {
   final userId;
-  const UploadPhotoScreen({Key? key,@required this.userId}) : super(key: key);
+
+  const UploadPhotoScreen({Key? key, @required this.userId}) : super(key: key);
 
   @override
   UploadPhotoScreenState createState() => UploadPhotoScreenState(userId);
 }
 
 class UploadPhotoScreenState extends State<UploadPhotoScreen> {
-
   final userId;
   UploadPhotoScreenState(this.userId);
 
@@ -24,6 +26,8 @@ class UploadPhotoScreenState extends State<UploadPhotoScreen> {
   List<Asset> images = <Asset>[];
 
   List files = [];
+
+
 
   late List<Asset> resultList;
 
@@ -74,7 +78,8 @@ class UploadPhotoScreenState extends State<UploadPhotoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget('Parinayam', center: true, titleTextStyle: boldTextStyle(size: 25)),
+      appBar: appBarWidget('Parinayam',
+          center: true, titleTextStyle: boldTextStyle(size: 25)),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,45 +114,46 @@ class UploadPhotoScreenState extends State<UploadPhotoScreen> {
             AppButton(
               width: context.width(),
               color: primaryColor,
-              shapeBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {
+              shapeBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              onTap: () async {
                 // finish(context);
-                print(" Uploaded Image 1.1: ${images[0]} "
-                    "\n Uploaded Image 1.2:  ${images[1]} "
-                    "\n Uploaded Image 1.3: ${images[2]} "
-                    "\n Uploaded Image 1.4: ${images[3]}");
-                // const IdealScreen().launch(context);
-                try {
-                  var formData = {
-                    'i1': images[0],
-                    'i2': images[1],
-                    'i3': images[2],
-                    'i4': images[3],
-                  };
-                  var res = Dio()
-                      .post('https://kiska.co.in/app/api/v1/createimage/$userId',
-                      data: formData)
-                      .then((response) {
-                    response.statusCode == 200
-                        ? print("successful Image Uploaded")
-                        : print("fail");
-                  });
-                } on DioError catch (e) {
-                  if (e.response != null) {
-                    print(e.message);
-                    print(e.response!.data);
-                    print(e.response!.headers);
-                    print(e.response);
-                  } else {
-                    print("fail");
-                    print(e.message);
-                  }
+                print(
+                    " Uploaded Image 1.1: ${images[0].name}, ${images[0].identifier} "
+                    "\n Uploaded Image 1.2: ${images[1].name}, ${images[1].identifier} "
+                    "\n Uploaded Image 1.3: ${images[2].name}, ${images[2].identifier} "
+                    "\n Uploaded Image 1.4: ${images[3].name}, ${images[3].identifier}");
+
+                // -----------------------------------------------------------------------------------------------------------------------------------------
+                    try{
+                  var data = FormData.fromMap(
+                      {
+                        "i1": await MultipartFile.fromFile(
+                          images[0]. identifier.toString(),
+                          filename: images[0].name,
+                          // contentType: MediaType("image", images[0]!.path.split('.').last),
+                        ),
+                      });
+
+                  Dio dio = Dio();
+                  await dio
+                      .post(
+                      'https://matrimonial.kiska.co.in/api/v1/createimage/$userId',
+                      data: data)
+                      .then((response) => print(response))
+                      .catchError((error) => print(error));
                 }
+                catch(e)
+                {
+                  print(e);
+                }
+                // ----------------------------------------------------------------------------------------------------------------------------------------
 
-
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(title: 'Parinayama',userId: userId)));
-
-
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            MyHomePage(title: 'Parinayama', userId: userId)));
               },
               text: 'Continue',
               textStyle: boldTextStyle(color: white),
@@ -170,13 +176,14 @@ class UploadPhotoScreenState extends State<UploadPhotoScreen> {
             padding: EdgeInsets.zero,
             color: primaryColor,
             child: Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: primaryColor.withOpacity(0.2)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: primaryColor.withOpacity(0.2)),
               height: 200,
               width: context.width() * 0.5 - 24,
               child: IconButton(
                 onPressed: () {
                   loadAssets();
-
                 },
                 icon: const Icon(Icons.add, color: primaryColor),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:parinayam/tabs/Match/fullprofile.dart';
+import 'package:parinayam/tabs/fullprofile.dart';
 
 
 class Matches extends StatefulWidget {
@@ -26,6 +26,7 @@ class _MatchesState extends State<Matches> {
     setState(() {});
   }
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       child: matcheData != null

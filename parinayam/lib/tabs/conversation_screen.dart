@@ -8,16 +8,16 @@ import 'package:parinayam/utils/data_generator.dart';
 import 'package:parinayam/utils/widgets.dart';
 
 // ignore: must_be_immutable
-class ChatScreen extends StatefulWidget {
+class Conversation extends StatefulWidget {
   ParinayamModel? data;
 
-  ChatScreen({Key? key, this.data}) : super(key: key);
+  Conversation({Key? key, this.data}) : super(key: key);
 
   @override
-  ChatScreenState createState() => ChatScreenState();
+  ConversationState createState() => ConversationState();
 }
 
-class ChatScreenState extends State<ChatScreen> {
+class ConversationState extends State<Conversation> {
   ScrollController scrollController = ScrollController();
   TextEditingController msgController = TextEditingController();
   FocusNode msgFocusNode = FocusNode();

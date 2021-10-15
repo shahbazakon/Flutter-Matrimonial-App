@@ -22,11 +22,11 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
   CreateAccountScreenState(this.userId);
 
   String genderValue = 'Male';
-  TextEditingController first_name = TextEditingController();
-  TextEditingController sceond_name = TextEditingController();
-  TextEditingController nick_name = TextEditingController();
-  TextEditingController mother_tongue = TextEditingController();
-  TextEditingController heightControlar = TextEditingController();
+  TextEditingController firstName = TextEditingController();
+  TextEditingController secondName = TextEditingController();
+  TextEditingController nickName = TextEditingController();
+  TextEditingController motherTongue = TextEditingController();
+  TextEditingController heightController = TextEditingController();
   TextEditingController dateController = TextEditingController();
 
   FocusNode emailFocus = FocusNode();
@@ -81,7 +81,7 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.EMAIL,
               cursorColor: primaryColor,
-              controller: first_name..text="Shahbaz",
+              controller: firstName..text="Shahbaz",
               decoration: buildInputDecoration('First Name', 'First Name',
                   prefixIcon: const Icon(Icons.person_add_outlined,
                       color: primaryColor)),
@@ -91,7 +91,7 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: sceond_name..text="Akon",
+              controller: secondName..text="Akon",
               decoration: buildInputDecoration('Second Name', 'Second Name',
                   prefixIcon: const Icon(Icons.person_add_alt_1_outlined,
                       color: primaryColor)),
@@ -101,7 +101,7 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: nick_name..text="Genius",
+              controller: nickName..text="Genius",
               decoration: buildInputDecoration('Nick Name', 'Nick Name',
                   prefixIcon:
                       const Icon(Icons.person_outline, color: primaryColor)),
@@ -111,7 +111,7 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: mother_tongue..text="Hindi",
+              controller: motherTongue..text="Hindi",
               decoration: buildInputDecoration('Mother Tongue', 'Mother Tongue',
                   prefixIcon:
                       const Icon(Icons.translate_rounded, color: primaryColor)),
@@ -178,7 +178,7 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
                   child: Expanded(
                     child: TextFormField(
                       keyboardType: TextInputType.number,
-                      controller: heightControlar..text="6.0",
+                      controller: heightController..text="6.0",
                       cursorColor: primaryColor,
                       cursorRadius: const Radius.circular(10),
                       decoration: const InputDecoration(
@@ -220,11 +220,11 @@ class CreateAccountScreenState extends State<CreateAccountScreen> {
                       MaterialPageRoute(
                         builder: (context) => CreateAccountScreen2(
                             userId: userId,
-                            first_name: first_name,
-                            sceond_name: sceond_name,
-                            nick_name: nick_name,
-                            mother_tongue: mother_tongue,
-                            heightControlar: heightControlar,
+                            firstName: firstName,
+                            secondName: secondName,
+                            nickName: nickName,
+                            motherTongue: motherTongue,
+                            heightController: heightController,
                             genderValue: genderValue),
                       ));
                   print("primary Details Added");

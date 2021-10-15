@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import "package:nb_utils/src/extensions/int_extensions.dart";
-import 'package:parinayam/model/post_data.dart';
+import 'package:parinayam/api%20requests/post_data.dart';
 import 'package:parinayam/screens/setting_screen.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/widgets.dart';
@@ -149,7 +149,8 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                 ),
                 16.width,
 
-                if (eduAndCarDataGET == null) AppButton(
+                eduAndCarDataGET == null ?
+                    AppButton(
                   padding: const EdgeInsets.all(12),
                   color: primaryColor,
                   shapeBorder: RoundedRectangleBorder(
@@ -169,7 +170,8 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                         .editDetails(userId);
 
                   },
-                ).expand() else AppButton(
+                ).expand():
+                AppButton(
                   padding: const EdgeInsets.all(12),
                   color: primaryColor,
                   shapeBorder: RoundedRectangleBorder(
@@ -187,7 +189,7 @@ class _EducationAndCareersState extends State<EducationAndCareers> {
                       salaryController.text,
                     )
                         .AddDetails(userId);
-
+                    
                     print('highest_qualification: $eduAndCarDataGET');
                     print('GET DATA: $eduAndCarDataGET ');
                     print('GET URL: ${"$eduAndCarGET$userId"} ');

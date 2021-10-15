@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class nochatfound extends StatelessWidget {
-  const nochatfound({Key? key}) : super(key: key);
+class NoChatFound extends StatefulWidget {
+  const NoChatFound({Key? key}) : super(key: key);
 
+  @override
+  State<NoChatFound> createState() => _NoChatFoundState();
+}
+
+class _NoChatFoundState extends State<NoChatFound> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,5 +64,4 @@ class nochatfound extends StatelessWidget {
       ),
     );
   }
-
 }

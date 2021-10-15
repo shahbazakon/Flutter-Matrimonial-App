@@ -79,7 +79,7 @@ class WalkThroughScreenState extends State<WalkThroughScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppButton(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   text: 'Skip',
                   shapeBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   textStyle: primaryTextStyle(),

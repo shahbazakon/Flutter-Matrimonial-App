@@ -9,10 +9,12 @@ class PostData {
   PostData(this.emailController, this.phoneController);
 
  SignIndata() async {
+   print("PHONE TYPE => ${int.parse(phoneController.text).runtimeType} => ${phoneController.text}");
+   print("EMAIL TYPE => ${emailController?.text.runtimeType} => ${emailController?.text}");
     try {
       var formData = {
-        'phone': phoneController.toString(),
-        'email': emailController != null ? emailController.toString() : null,
+        'phone': int.parse(phoneController.text),
+        'email': emailController?.text,
       };
 
       var res = await Dio()
@@ -22,7 +24,7 @@ class PostData {
             ? print("successful ${response.data}")
             : print("fail");
 
-        print("returned userID ${response.data["data"]} ");
+        print(" rned userID ${response.data["data"]} ");
         return response.data["data"];
       });
       return res;
@@ -76,7 +78,7 @@ class AddAccountDetails {
   AddDetails(userId) async {
 
     print("AddDetails Called");
-    print("AddDetails: https://kiska.co.in/app/api/v1/createpersonaldetail/$userId");
+    print("AddDetails: https://matrimonial.kiska.co.in/app/api/v1/createpersonaldetail/$userId");
 
     try {
       var formData = {
@@ -96,7 +98,7 @@ class AddAccountDetails {
       };
 
       var res = await Dio()
-          .post('https://kiska.co.in/app/api/v1/createpersonaldetail/$userId',
+          .post('https://matrimonial.kiska.co.in/app/api/v1/createpersonaldetail/$userId',
               data: formData)
           .then((response) {
         response.statusCode == 200
@@ -143,10 +145,10 @@ class AddPresonalDetails {
       this.mgothramController,
   );
 
-  AddDetails(userId) async {
+  addDetails(userId) async {
 
     print("Add Personal Details Called");
-    print("AddDetails: https://kiska.co.in/app/api/v1/createextradetails/$userId");
+    print("AddDetails: https://matrimonial.kiska.co.in/app/api/v1/createextradetails/$userId");
 
     try {
       var formData = {
@@ -162,7 +164,7 @@ class AddPresonalDetails {
       };
 
       var res = await Dio()
-          .post('https://kiska.co.in/app/api/v1/createextradetails/$userId',
+          .post('https://matrimonial.kiska.co.in/app/api/v1/createextradetails/$userId',
           data: formData)
           .then((response) {
         response.statusCode == 200
@@ -198,10 +200,13 @@ class AddEduAndCar {
       this.workController,
       this.organizationController,
       this.salaryController);
+
+
+
   AddDetails(userId) async {
 
     print("Add Education and Career Called");
-    print("Add Education and Career Details: https://kiska.co.in/app/api/v1/createeduandcar/$userId");
+    print("Add Education and Career Details: https://matrimonial.kiska.co.in/app/api/v1/createeduandcar/$userId");
 
     try {
       var formData = {
@@ -213,7 +218,7 @@ class AddEduAndCar {
       };
 
       var res = await Dio()
-          .post('https://kiska.co.in/app/api/v1/createeduandcar/$userId',
+          .post('https://matrimonial.kiska.co.in/app/api/v1/createeduandcar/$userId',
           data: formData)
           .then((response) {
         response.statusCode == 200
@@ -237,10 +242,8 @@ class AddEduAndCar {
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-// #####################################################################################################
-
-
-
+//==========================================================================================================================================================
+//==========================================================================================================================================================
 
 class editEduAndCar {
   String? qualificationController;
@@ -258,7 +261,7 @@ class editEduAndCar {
   editDetails(userId) async {
 
     print("Edit Education and Career Called");
-    print("Edit Education and Career Details: https://kiska.co.in/app/api/v1/editeduandcardetails/$userId");
+    print("Edit Education and Career Details: https://matrimonial.kiska.co.in/app/api/v1/editeduandcardetails/$userId");
 
     try {
       var formData = {
@@ -270,7 +273,7 @@ class editEduAndCar {
       };
 
       var res = await Dio()
-          .put('https://kiska.co.in/app/api/v1/editeduandcardetails/$userId',
+          .put('https://matrimonial.kiska.co.in/app/api/v1/editeduandcardetails/$userId',
           data: formData)
           .then((response) {
         response.statusCode == 200
@@ -326,7 +329,7 @@ class editProfileDetails {
   editDetails(userId) async {
 
     print("editProfileDetails Called");
-    print("editDetails: https://kiska.co.in/app/api/v1/createpersonaldetail/$userId");
+    print("editDetails: https://matrimonial.kiska.co.in/app/api/v1/createpersonaldetail/$userId");
 
     try {
       var formData = {
@@ -346,7 +349,7 @@ class editProfileDetails {
       };
 
       var res = await Dio()
-          .put('https://kiska.co.in/app/api/v1/editpersonaldetails/$userId',
+          .put('https://matrimonial.kiska.co.in/app/api/v1/editpersonaldetails/$userId',
           data: formData)
           .then((response) {
         response.statusCode == 200
@@ -396,7 +399,7 @@ class editPresonalDetails {
   editDetails(userId) async {
 
     print("edit Personal Details Called");
-    print("editDetails: https://kiska.co.in/app/api/v1/createextradetails/$userId");
+    print("editDetails: https://matrimonial.kiska.co.in/app/api/v1/createextradetails/$userId");
 
     try {
       var formData = {
@@ -412,7 +415,7 @@ class editPresonalDetails {
       };
 
       var res = await Dio()
-          .put('https://kiska.co.in/app/api/v1/createextradetails/$userId',
+          .put('https://matrimonial.kiska.co.in/app/api/v1/createextradetails/$userId',
           data: formData)
           .then((response) {
         response.statusCode == 200

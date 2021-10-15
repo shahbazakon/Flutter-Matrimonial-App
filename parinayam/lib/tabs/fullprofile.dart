@@ -19,7 +19,7 @@ class FullProfileState extends State<FullProfile> {
 
   int page = 0;
   static const MAX = 4;
-  var fullProfileAPI = "https://kiska.co.in/app/api/v1/fullprofile/1";
+  var fullProfileAPI = "https://matrimonial.kiska.co.in/app/api/v1/fullprofile/1";
   var fullProfileData;
   bool isVisible = false;
   var changeText = "Show More";

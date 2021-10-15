@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:parinayam/model/post_data.dart';
+import 'package:parinayam/api%20requests/post_data.dart';
 import 'package:parinayam/screens/setting_screen.dart';
-import 'package:parinayam/tabs/HomePage/Edit%20Details/profile_details.dart';
+import 'package:parinayam/tabs/profile_details.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/widgets.dart';
 import 'education_and_career_details.dart';
@@ -32,7 +32,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   TextEditingController raasiController = TextEditingController();
 
 
-  var presonalDetailsGET = "https://kiska.co.in/app/api/v1/personaldetails/";
+  var presonalDetailsGET = "https://matrimonial.kiska.co.in/app/api/v1/personaldetails/";
   var presonalDataGET;
 
 
@@ -106,7 +106,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
           16.height,
           AppTextField(
 
-            initialValue: bioController.text,
+            // initialValue: bioController.text,
             textStyle: primaryTextStyle(color: black),
             textFieldType: TextFieldType.OTHER,
             cursorColor: primaryColor,
@@ -276,7 +276,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   textStyle: primaryTextStyle(color: white),
                   onTap: () async {
                     print(
-                        '1: ${bodyShapeValue}\n 2: ${bloodGroupValue}\n 3: ${bioController.text}\n 4: ${locationController.text}\n 5: ${gothramController.text}\n 6: ${mgothramController.text} \n 7. ${doshamController.text} \n 8. ${starController.text} \n 9. ${raasiController.text}');
+                        '1: $bodyShapeValue\n 2: ${bloodGroupValue}\n 3: ${bioController.text}\n 4: ${locationController.text}\n 5: ${gothramController.text}\n 6: ${mgothramController.text} \n 7. ${doshamController.text} \n 8. ${starController.text} \n 9. ${raasiController.text}');
                     await AddPresonalDetails (
                         bodyShapeValue,
                         bloodGroupValue,
@@ -287,7 +287,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                         doshamController.text,
                         starController.text,
                         raasiController.text)
-                        .AddDetails(userId);
+                        .addDetails(userId);
                   },
                 ).expand():
                 AppButton(
@@ -298,7 +298,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   textStyle: primaryTextStyle(color: white),
                   onTap: () async {
                     print(
-                        '1: ${bodyShapeValue}\n 2: ${bloodGroupValue}\n 3: ${bioController.text}\n 4: ${locationController.text}\n 5: ${gothramController.text}\n 6: ${mgothramController.text} \n 7. ${doshamController.text} \n 8. ${starController.text} \n 9. ${raasiController.text}');
+                        '1: $bodyShapeValue\n 2: $bloodGroupValue\n 3: ${bioController.text}\n 4: ${locationController.text}\n 5: ${gothramController.text}\n 6: ${mgothramController.text} \n 7. ${doshamController.text} \n 8. ${starController.text} \n 9. ${raasiController.text}');
                     await editPresonalDetails (
                         bodyShapeValue,
                         bloodGroupValue,

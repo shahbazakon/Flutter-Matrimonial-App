@@ -62,8 +62,8 @@ class InterestScreenState extends State<InterestScreen> {
                               borderRadius: BorderRadius.circular(30),
                               color: i.mISCheck! ? primaryColor : white,
                             ),
-                            margin: EdgeInsets.all(8),
-                            padding: EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             child: Text(i.name.validate(), style: boldTextStyle(color: i.mISCheck! ? white : black), textAlign: TextAlign.center),
                           ).onTap((){
                             i.mISCheck = !i.mISCheck!;

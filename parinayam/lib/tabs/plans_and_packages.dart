@@ -9,7 +9,7 @@ class PlansAndPackages extends StatefulWidget {
 }
 
 class _PlansAndPackagesState extends State<PlansAndPackages> {
-  var subPlane = "https://kiska.co.in/app/api/v1/subsplan";
+  var subPlane = "https://matrimonial.kiska.co.in/app/api/v1/subsplan";
   var subPlaneData;
 
 
@@ -110,36 +110,11 @@ class _PlansAndPackagesState extends State<PlansAndPackages> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      child: Column(children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 8.0,
-                                width: 8.0,
-                                decoration: const BoxDecoration(
-                                  color: Colors.black,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                              const VerticalDivider(
-                                color: Colors.black,
-                                width: 6,
-                              ),
-                               Text(
-                                "${subPlaneData[index]["description"]}",
-                                style: const TextStyle(
-                                    fontSize: 19.0,
-                                    fontWeight: FontWeight.w400),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(children: [
+                    child: Column(children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
                             Container(
                               height: 8.0,
                               width: 8.0,
@@ -153,14 +128,37 @@ class _PlansAndPackagesState extends State<PlansAndPackages> {
                               width: 6,
                             ),
                              Text(
-                              "${subPlaneData[index]["validity"]}",
+                              "${subPlaneData[index]["description"]}",
                               style: const TextStyle(
-                                  fontSize: 19.0, fontWeight: FontWeight.w400),
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w400),
                             )
-                          ]),
-                        )
-                      ]),
-                    ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(children: [
+                          Container(
+                            height: 8.0,
+                            width: 8.0,
+                            decoration: const BoxDecoration(
+                              color: Colors.black,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          const VerticalDivider(
+                            color: Colors.black,
+                            width: 6,
+                          ),
+                           Text(
+                            "${subPlaneData[index]["validity"]}",
+                            style: const TextStyle(
+                                fontSize: 19.0, fontWeight: FontWeight.w400),
+                          )
+                        ]),
+                      )
+                    ]),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:parinayam/model/post_data.dart';
+import 'package:parinayam/api%20requests/post_data.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/widgets.dart';
 import 'create_account_screen.dart';

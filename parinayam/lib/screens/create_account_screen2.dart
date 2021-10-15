@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:parinayam/model/post_data.dart';
+import 'package:parinayam/api%20requests/post_data.dart';
 import 'package:parinayam/screens/upload_photo_screen.dart';
-import 'package:parinayam/tabs/HomePage/home.dart';
+import 'package:parinayam/tabs/home.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/widgets.dart';
 
@@ -12,71 +12,71 @@ import '../main.dart';
 
 class CreateAccountScreen2 extends StatefulWidget {
   final userId,
-      first_name,
-      sceond_name,
-      nick_name,
-      mother_tongue,
-      heightControlar,
+      firstName,
+      secondName,
+      nickName,
+      motherTongue,
+      heightController,
       genderValue;
 
   const CreateAccountScreen2(
       {Key? key,
       @required this.userId,
-      this.first_name,
-      this.sceond_name,
-      this.nick_name,
-      this.mother_tongue,
-      this.heightControlar,
+      this.firstName,
+      this.secondName,
+      this.nickName,
+      this.motherTongue,
+      this.heightController,
       this.genderValue})
       : super(key: key);
 
   @override
   CreateAccountScreen2State createState() => CreateAccountScreen2State(
       userId,
-      first_name,
-      sceond_name,
-      nick_name,
-      mother_tongue,
-      heightControlar,
+      firstName,
+      secondName,
+      nickName,
+      motherTongue,
+      heightController,
       genderValue);
 }
 
 class CreateAccountScreen2State extends State<CreateAccountScreen2> {
   final userId,
-      first_name,
-      sceond_name,
-      nick_name,
-      mother_tongue,
-      heightControlar,
+      firstName,
+      secondName,
+      nickName,
+      motherTongue,
+      heightController,
       genderValue;
 
   CreateAccountScreen2State(
       this.userId,
-      this.first_name,
-      this.sceond_name,
-      this.nick_name,
-      this.mother_tongue,
-      this.heightControlar,
+      this.firstName,
+      this.secondName,
+      this.nickName,
+      this.motherTongue,
+      this.heightController,
       this.genderValue);
 
   String  maritalStatus = 'Unmarried';
   String TOB = "Time Of Birth";
 
-  TextEditingController DOBController = TextEditingController();
-  TextEditingController TOBController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
+  TextEditingController tobController = TextEditingController();
   TextEditingController cityController = TextEditingController();
-  TextEditingController religinController = TextEditingController();
+  TextEditingController religionController = TextEditingController();
   TextEditingController castController = TextEditingController();
   TextEditingController subCastController = TextEditingController();
 
-  Future<void> PickTime(BuildContext context) async {
+  Future<void> pickTime(BuildContext context) async {
     final TimeOfDay? newTime =
         await showTimePicker(context: context, initialTime: TimeOfDay.now());
 
     if (newTime != null) {
       setState(() {
         TOB = newTime.format(context);
-        TOBController.text = newTime.format(context);
+        tobController.text = newTime.format(context);
       });
     }
   }
@@ -92,7 +92,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
 
   Future<void> init() async {
     date = DateTime.now();
-    DOBController.text = DateFormat('dd/MM/yyyy').format(date);
+    dobController.text = DateFormat('dd/MM/yyyy').format(date);
   }
 
   pickDate() async {
@@ -105,7 +105,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
     if (time != null) {
       setState(() {
         date = time;
-        DOBController.text = DateFormat('dd/MM/yyyy').format(date);
+        dobController.text = DateFormat('dd/MM/yyyy').format(date);
       });
     }
   }
@@ -130,19 +130,19 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
             Text('Fill all the Details', style: primaryTextStyle()),
             16.height,
             AppTextField(
-              controller: DOBController..text="2001-02-01",
+              controller: dobController..text="2001-02-01",
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
               decoration: buildInputDecoration('Date of Birth', 'Date of Birth',
-                  prefixIcon: Icon(Icons.date_range, color: primaryColor)),
+                  prefixIcon: const Icon(Icons.date_range, color: primaryColor)),
               onTap: () {
                 pickDate();
               },
             ),
             16.height,
             TextFormField(
-              controller: TOBController..text = '10:30 AM',
+              controller: tobController..text = '10:30 AM',
               decoration: InputDecoration(
                 hintText: TOB,
                 prefixIcon: const Icon(Icons.access_time, color: primaryColor),
@@ -158,7 +158,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
                 ),
               ),
               onTap: () {
-                PickTime(context);
+                pickTime(context);
               },
             ),
             16.height,
@@ -176,7 +176,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: religinController..text = 'Demo',
+              controller: religionController..text = 'Demo',
               decoration: buildInputDecoration('Religion', 'Religion',
                   prefixIcon:
                       Icon(Icons.location_on_outlined, color: primaryColor)),
@@ -257,18 +257,18 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
                   print("Adding Secondry Details");
 
                   print(
-                      '1: ${first_name.text}\n 2: ${sceond_name.text}\n 3: ${nick_name.text}\n 4: ${mother_tongue.text}\n 5: ${genderValue}\n 6: ${heightControlar.text} \n 7. ${DOBController.text} \n 8. ${TOBController.text} \n 9. ${cityController.text} \n 10. ${religinController.text} \n 11. ${castController.text} \n 12. ${subCastController.text} \n 13. ${maritalStatus}');
+                      '1: ${firstName.text}\n 2: ${secondName.text}\n 3: ${nickName.text}\n 4: ${motherTongue.text}\n 5: $genderValue\n 6: ${heightController.text} \n 7. ${dobController.text} \n 8. ${tobController.text} \n 9. ${cityController.text} \n 10. ${religionController.text} \n 11. ${castController.text} \n 12. ${subCastController.text} \n 13. $maritalStatus');
                   await AddAccountDetails(
-                          first_name.text,
-                          sceond_name.text,
-                          nick_name.text,
-                          mother_tongue.text,
-                          heightControlar.text,
+                          firstName.text,
+                          secondName.text,
+                          nickName.text,
+                          motherTongue.text,
+                          heightController.text,
                           genderValue,
-                          DOBController.text,
-                          TOBController.text,
+                          dobController.text,
+                          tobController.text,
                           cityController.text,
-                          religinController.text,
+                          religionController.text,
                           castController.text,
                           subCastController.text,
                           maritalStatus)
@@ -276,11 +276,10 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
                   // finish(context);
                   // const UploadPhotoScreen().launch(context);
                   // MyHomePage(title: 'Parinayama',userId: userId);
-                  //>>UploadPhotoScreen(userId: userId)
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context)  => MyHomePage(title: 'Parinayama',userId: userId)));
+                          builder: (context)  => UploadPhotoScreen(userId: userId)));
                   print("Secondry Details Added");
                   // const InterestScreen().launch(context);
                 })
@@ -288,5 +287,11 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
         ),
       ),
     );
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('userId', userId));
+    properties.add(DiagnosticsProperty('userId', userId));
   }
 }

@@ -3,12 +3,12 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:parinayam/model/parinayam_model.dart';
 import 'package:parinayam/screens/location_screen.dart';
 import 'package:parinayam/screens/notification_screen.dart';
-import 'package:parinayam/tabs/HomePage/Edit%20Details/education_and_career_details.dart';
-import 'package:parinayam/tabs/HomePage/Edit%20Details/family_details.dart';
-import 'package:parinayam/tabs/HomePage/Edit%20Details/personal_detail.dart';
-import 'package:parinayam/tabs/HomePage/Edit%20Details/pictures.dart';
-import 'package:parinayam/tabs/HomePage/Edit%20Details/profile_details.dart';
-import 'package:parinayam/tabs/HomePage/profile.dart';
+import 'package:parinayam/tabs/education_and_career_details.dart';
+import 'package:parinayam/tabs/family_details.dart';
+import 'package:parinayam/tabs/personal_detail.dart';
+import 'package:parinayam/tabs/pictures.dart';
+import 'package:parinayam/tabs/profile_details.dart';
+import 'package:parinayam/tabs/profile.dart';
 import 'constants.dart';
 
 List<ParinayamModel> getInterests() {
@@ -33,7 +33,7 @@ List<ParinayamModel> getInterests() {
 
 List<ParinayamModel> getSettingData() {
   List<ParinayamModel> list = [];
-  list.add(ParinayamModel(name: 'Edit your profile', widget: const EditProfile()));
+  // list.add(ParinayamModel(name: 'Edit your profile', widget: const EditProfile()));
   list.add(ParinayamModel(name: 'Change your location', widget: const LocationScreen()));
   list.add(ParinayamModel(name: 'Notifications', widget: const NotificationScreen()));
 

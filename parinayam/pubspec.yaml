@@ -42,6 +42,8 @@ dependencies:
   google_fonts: ^2.1.0
   json_annotation: ^4.0.1
   flutter_colorpicker: ^0.5.0
+  path: ^1.8.0
+  path_provider: ^2.0.5
 
   # IMAGES
   cached_network_image: ^3.1.0

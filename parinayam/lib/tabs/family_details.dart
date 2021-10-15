@@ -41,7 +41,7 @@ class _FamilyDetailsState extends State<FamilyDetails> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SettingScreen()),
+                                    builder: (context) => const SettingScreen()),
                               );
                             }),
                       ),
@@ -153,7 +153,7 @@ class _FamilyDetailsState extends State<FamilyDetails> {
           16.height,
           Row(children: [
             AppButton(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               text: 'Prev',
               shapeBorder: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),

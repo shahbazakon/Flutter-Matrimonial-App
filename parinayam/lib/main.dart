@@ -7,9 +7,9 @@ import 'package:parinayam/screens/signin_screen.dart';
 import 'package:parinayam/screens/upload_photo_screen.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/data_generator.dart';
-import 'tabs/Chats/chat.dart';
-import 'tabs/HomePage/home.dart';
-import 'tabs/Match/matches.dart';
+import 'tabs/chat.dart';
+import 'tabs/home.dart';
+import 'tabs/matches.dart';
 
 Future main() async {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         //   CreateAccountScreen(),
         // MyHomePage(title: "Parinayama"),                // home page
       ),
-      routes: {"/about": (context) => const about()},
+      routes: {"/about": (context) => const About()},
     );
   }
 }
@@ -51,8 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final userId;
   _MyHomePageState(this.userId);
-  Color currentColor = Color.fromRGBO(255, 90, 96, 100);
 
+
+  Color currentColor = const Color.fromRGBO(255, 90, 96, 100);
   void changeColor(Color color) => setState(() => currentColor = color);
 
   @override
@@ -96,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                     // myThemeColor(currentColor); // <============================ need to set no primary color
                   },
-                  color: useWhiteForeground(Color.fromRGBO(255, 90, 96, 100))
+                  color: useWhiteForeground(const Color.fromRGBO(255, 90, 96, 100))
                       ? Colors.black
                       : Colors.white,
                   icon: const Icon(Icons.color_lens_rounded)),
@@ -105,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const nochatfound(),
+                          builder: (context) => const NoChatFound(),
                           fullscreenDialog: true),
                     );
                   },
@@ -119,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const about()),
+                              builder: (context) => const About()),
                         );
                       },
                     ),

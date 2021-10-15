@@ -9,8 +9,8 @@ import 'package:parinayam/model/parinayam_model.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/data_generator.dart';
 
-import 'Edit Details/personal_detail.dart';
-import 'Edit Details/profile_details.dart';
+import 'personal_detail.dart';
+import 'profile_details.dart';
 
 class EditProfile extends StatefulWidget {
   final userId;
@@ -25,7 +25,7 @@ class Profile extends State<EditProfile> {
   var userId;
   Profile(this.userId);
 
-  var proflieUrl = "https://kiska.co.in/app/api/v1/personaldetails/";
+  var proflieUrl = "https://matrimonial.kiska.co.in/app/api/v1/personaldetails/";
   var matcheUrl = "https://kiska.co.in/app/api/v1/matchprofile/1";
   var profileData, matcheData;
 
@@ -105,7 +105,7 @@ class Profile extends State<EditProfile> {
             },
             body: SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 00),
+                padding: const EdgeInsets.symmetric(horizontal: 00),
                 child: Column(
                   children: <Widget>[
                     Container(height: 50),
@@ -127,7 +127,7 @@ class Profile extends State<EditProfile> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ProfileDetails()),
+                                    builder: (context) => const ProfileDetails()),
                               );
                             })
                       ],
