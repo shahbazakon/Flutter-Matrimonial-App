@@ -1,3 +1,7 @@
+// import 'dart:html';
+
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +9,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:path/path.dart' as p;
 import 'package:parinayam/utils/colors.dart';
 import 'package:path_provider/path_provider.dart';
 import '../main.dart';
@@ -118,21 +123,27 @@ class UploadPhotoScreenState extends State<UploadPhotoScreen> {
                   borderRadius: BorderRadius.circular(10)),
               onTap: () async {
                 // finish(context);
+                var ImagePath1 = "${(await getTemporaryDirectory()).path}/${images[0].name}";
+                var ImagePath2 = "${(await getTemporaryDirectory()).path}/${images[1].name}";
+                var ImagePath3 = "${(await getTemporaryDirectory()).path}/${images[2].name}";
+                var ImagePath4 = "${(await getTemporaryDirectory()).path}/${images[3].name}";
                 print(
-                    " Uploaded Image 1.1: ${images[0].name}, ${images[0].identifier} "
-                    "\n Uploaded Image 1.2: ${images[1].name}, ${images[1].identifier} "
-                    "\n Uploaded Image 1.3: ${images[2].name}, ${images[2].identifier} "
-                    "\n Uploaded Image 1.4: ${images[3].name}, ${images[3].identifier}");
+                    " Uploaded Image 1.1: ${images[0].name}, $ImagePath1"
+                    "\n Uploaded Image 1.2: ${images[1].name}, $ImagePath2 "
+                    "\n Uploaded Image 1.3: ${images[2].name}, $ImagePath3 "
+                    "\n Uploaded Image 1.4: ${images[3].name}, $ImagePath4");
 
                 // -----------------------------------------------------------------------------------------------------------------------------------------
                     try{
                   var data = FormData.fromMap(
                       {
                         "i1": await MultipartFile.fromFile(
-                          images[0]. identifier.toString(),
+                          ImagePath1,
                           filename: images[0].name,
                           // contentType: MediaType("image", images[0]!.path.split('.').last),
                         ),
+
+
                       });
 
                   Dio dio = Dio();
