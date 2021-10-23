@@ -124,14 +124,12 @@ class UploadPhotoScreenState extends State<UploadPhotoScreen> {
               onTap: () async {
                 // finish(context);
                 var ImagePath1 = "${(await getTemporaryDirectory()).path}/${images[0].name}";
-                var ImagePath2 = "${(await getTemporaryDirectory()).path}/${images[1].name}";
-                var ImagePath3 = "${(await getTemporaryDirectory()).path}/${images[2].name}";
-                var ImagePath4 = "${(await getTemporaryDirectory()).path}/${images[3].name}";
+
                 print(
                     " Uploaded Image 1.1: ${images[0].name}, $ImagePath1"
-                    "\n Uploaded Image 1.2: ${images[1].name}, $ImagePath2 "
-                    "\n Uploaded Image 1.3: ${images[2].name}, $ImagePath3 "
-                    "\n Uploaded Image 1.4: ${images[3].name}, $ImagePath4");
+                    "\n Uploaded Image 1.2: ${images[1].name}, ${images[1]} "
+                    "\n Uploaded Image 1.3: ${images[2].name},  "
+                    "\n Uploaded Image 1.4: ${images[3].name}, ");
 
                 // -----------------------------------------------------------------------------------------------------------------------------------------
                     try{
