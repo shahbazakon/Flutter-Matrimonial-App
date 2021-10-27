@@ -130,7 +130,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
             Text('Fill all the Details', style: primaryTextStyle()),
             16.height,
             AppTextField(
-              controller: dobController..text="2001-02-01",
+              controller: dobController,
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
@@ -142,7 +142,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
             ),
             16.height,
             TextFormField(
-              controller: tobController..text = '10:30 AM',
+              controller: tobController,
               decoration: InputDecoration(
                 hintText: TOB,
                 prefixIcon: const Icon(Icons.access_time, color: primaryColor),
@@ -166,7 +166,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: cityController..text="Delhi",
+              controller: cityController,
               decoration: buildInputDecoration('City', 'City',
                   prefixIcon:
                       Icon(Icons.location_on_outlined, color: primaryColor)),
@@ -176,7 +176,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: religionController..text = 'Demo',
+              controller: religionController,
               decoration: buildInputDecoration('Religion', 'Religion',
                   prefixIcon:
                       Icon(Icons.location_on_outlined, color: primaryColor)),
@@ -186,7 +186,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: castController..text="Demo1",
+              controller: castController,
               decoration: buildInputDecoration('Cast', 'Cast',
                   prefixIcon:
                       const Icon(Icons.person_outline, color: primaryColor)),
@@ -196,7 +196,7 @@ class CreateAccountScreen2State extends State<CreateAccountScreen2> {
               textStyle: primaryTextStyle(color: black),
               textFieldType: TextFieldType.OTHER,
               cursorColor: primaryColor,
-              controller: subCastController..text = 'Demo2',
+              controller: subCastController,
               decoration: buildInputDecoration('SubCast', 'SubCast',
                   prefixIcon:
                       const Icon(Icons.person_outline, color: primaryColor)),

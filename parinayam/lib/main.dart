@@ -4,6 +4,7 @@ import 'package:parinayam/screens/about.dart';
 import 'package:parinayam/screens/nochats.dart';
 import 'package:parinayam/screens/setting_screen.dart';
 import 'package:parinayam/screens/signin_screen.dart';
+import 'package:parinayam/screens/splash_screen.dart';
 import 'package:parinayam/screens/upload_photo_screen.dart';
 import 'package:parinayam/utils/colors.dart';
 import 'package:parinayam/utils/data_generator.dart';
@@ -24,11 +25,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Parinayama",
       debugShowCheckedModeBanner: false,
-      home: const DefaultTabController(
+      home:  const DefaultTabController(
         length: 3,
-        child:
-            // SplashScreen(),
-            SignInScreen(),
+        child: SplashScreen(),
+            // SignInScreen(),
           // UploadPhotoScreen(),
         //   CreateAccountScreen(),
         // MyHomePage(title: "Parinayama"),                // home page

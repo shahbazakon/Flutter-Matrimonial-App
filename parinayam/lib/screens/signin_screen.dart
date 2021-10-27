@@ -56,7 +56,7 @@ class SignInScreenState extends State<SignInScreen> {
                 nextFocus: passWordFocus,
                 textFieldType: TextFieldType.EMAIL,
                 cursorColor: primaryColor,
-                controller: emailController..text='abc@gmail.com',
+                controller: emailController,
                 decoration: buildInputDecoration('Email','Email',
                     prefixIcon:
                         const Icon(Icons.email_rounded, color: primaryColor)),
@@ -66,7 +66,7 @@ class SignInScreenState extends State<SignInScreen> {
                 textStyle: primaryTextStyle(color: black),
                 textFieldType: TextFieldType.PHONE,
                 cursorColor: primaryColor,
-                controller: phoneController..text="1234567890",
+                controller: phoneController,
                 decoration: buildInputDecoration('Phone','Phone',
                     prefixIcon:
                         const Icon(Icons.call_rounded, color: primaryColor)),

@@ -1,17 +1,14 @@
 // import 'dart:html';
 
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http_parser/http_parser.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:path/path.dart' as p;
 import 'package:parinayam/utils/colors.dart';
-import 'package:path_provider/path_provider.dart';
+
 import '../main.dart';
 
 class UploadPhotoScreen extends StatefulWidget {
@@ -25,14 +22,12 @@ class UploadPhotoScreen extends StatefulWidget {
 
 class UploadPhotoScreenState extends State<UploadPhotoScreen> {
   final userId;
-  UploadPhotoScreenState(this.userId);
 
+  UploadPhotoScreenState(this.userId);
 
   List<Asset> images = <Asset>[];
 
   List files = [];
-
-
 
   late List<Asset> resultList;
 
@@ -122,40 +117,31 @@ class UploadPhotoScreenState extends State<UploadPhotoScreen> {
               shapeBorder: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               onTap: () async {
-                // finish(context);
-                var ImagePath1 = "${(await getTemporaryDirectory()).path}/${images[0].name}";
-
                 print(
-                    " Uploaded Image 1.1: ${images[0].name}, $ImagePath1"
-                    "\n Uploaded Image 1.2: ${images[1].name}, ${images[1]} "
-                    "\n Uploaded Image 1.3: ${images[2].name},  "
-                    "\n Uploaded Image 1.4: ${images[3].name}, ");
+                    " Uploaded Image 1.1: ${images[0].name},${images[0].identifier}  "
+                    "\n Uploaded Image 1.2: ${images[1].name}, ${images[1].identifier} "
+                    "\n Uploaded Image 1.3: ${images[2].name}, ${images[2].identifier}  "
+                    "\n Uploaded Image 1.4: ${images[3].name}, ${images[3].identifier} ");
 
                 // -----------------------------------------------------------------------------------------------------------------------------------------
-                    try{
-                  var data = FormData.fromMap(
-                      {
-                        "i1": await MultipartFile.fromFile(
-                          ImagePath1,
-                          filename: images[0].name,
-                          // contentType: MediaType("image", images[0]!.path.split('.').last),
-                        ),
-
-
-                      });
-
-                  Dio dio = Dio();
-                  await dio
-                      .post(
-                      'https://matrimonial.kiska.co.in/api/v1/createimage/$userId',
-                      data: data)
-                      .then((response) => print(response))
-                      .catchError((error) => print(error));
-                }
-                catch(e)
-                {
-                  print(e);
-                }
+                // try {
+                //   var data = FormData.fromMap({
+                //     "i1":"iamge1",
+                //     "i2":"iamge2",
+                //     "i3":"iamge3",
+                //     "i4":"iamge4",
+                //   });
+                //
+                //   Dio dio = Dio();
+                //   await dio
+                //       .post(
+                //           'https://matrimonial.kiska.co.in/api/v1/createimage/$userId',
+                //           data: data)
+                //       .then((response) => print(response))
+                //       .catchError((error) => print(error));
+                // } catch (e) {
+                //   print(e);
+                // }
                 // ----------------------------------------------------------------------------------------------------------------------------------------
 
                 Navigator.push(
